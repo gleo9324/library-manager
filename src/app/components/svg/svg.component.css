@@ -1,0 +1,32 @@
+/* svg.component.css */
+
+.svg-container {
+  position: absolute;
+  left: 40%; /* Distanza dal bordo sinistro */
+  right: 0%; /* Distanza dal bordo destro */
+  top: 0%; /* Distanza dal bordo superiore */
+  bottom: 0%; /* Distanza dal bordo inferiore */
+  width: 48px; /* Larghezza */
+  height: 48px; /* Altezza */
+  align-items: center;
+  display: flex;
+  justify-content: center; /* Aggiunto per centrare verticalmente */
+}
+
+.svg-container {
+  cursor: pointer; /*"manina" puntatore cliccabile*/
+}
+
+.svg-icon ::ng-deep svg path {
+  fill: var(
+    --dark-color
+  ); /*colore icone non selezionate (diverso da palette style preesistente)*/
+}
+
+.svg-iconhover ::ng-deep svg path {
+  fill: var(--unselected-color);
+}
+
+.svg-icon-selected ::ng-deep svg path {
+  fill: var(--light-color);
+}

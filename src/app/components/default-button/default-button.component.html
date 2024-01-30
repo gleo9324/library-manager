@@ -1,0 +1,6 @@
+<!-- default-button.component.html -->
+<default-button class="btn"
+  [ngClass]="{'dark-btn': !isLight, 'light-btn': isLight, 'empty-btn': isEmpty, 'grey-btn': isGrey}" type="button"
+  (click)="ButtonClick()">
+  <div class="button-text"> {{buttonText}} </div>
+</default-button>

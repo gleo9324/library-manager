@@ -1,0 +1,27 @@
+<div class="main-container">
+  <div class="browse-container to-first-page arrow" (click)="onFirstPageClick()"
+    [inlineSVG]="'../../../assets/icons/double-arrow-icon.svg'"></div>
+  <div class="browse-container to-previous-page arrow" (click)="onBackClick()"
+    [inlineSVG]="'../../../assets/icons/arrow-icon.svg'"></div>
+  <!--Aggiunge tanti quandrati pagina quante sono le pagine-1. Fa collassare il blocco se l'elemento non rispetta la condizione dell'ngIf annidiato-->
+  <div (click)="onPageClick(i)" *ngFor="let page of pageArray.slice(0,pageArray.length-1), let i = index"
+    [style.display]="i>=firstPage && i<=lastPage ? 'block' : 'none'">
+    <!--fa vedere solo 4 pagine definite da firstPage e lastPage-->
+    <div class="browse-container-pages"
+      [ngClass]="{'browse-container-pages-selected': pageArray[i],'browse-container-pages-unselected': !pageArray[i]}"
+      *ngIf="i>=firstPage && i<=lastPage"> <!--da rifinire le logiche di display delle pagine precedenti. se vado all'ultima pagina, mi deve mostrare il blocco dell'ultima pag.
+        se vado alla pag. 1 deve tornare al blocco 1234.
+      -->
+      {{i + 1}}</div>
+  </div>
+  <div class="browse-container-pages dots" *ngIf="pageArray.length>4 && pageArray.length-1 >= lastPage">
+    ...</div>
+  <div class="browse-container-pages" (click)="onPageClick(pageArray.length-1)"
+    [ngClass]="{'browse-container-pages-selected': pageArray[pageArray.length-1],'browse-container-pages-unselected': !pageArray[pageArray.length-1]}">
+    {{pageArray.length}}</div>
+  <div class="browse-container arrow" (click)="onForwardClick()" [inlineSVG]="'../../../assets/icons/arrow-icon.svg'">
+  </div>
+  <div class="browse-container to-last-page arrow" (click)="onLastPageClick()"
+    [inlineSVG]="'../../../assets/icons/double-arrow-icon.svg'">
+  </div>
+</div>

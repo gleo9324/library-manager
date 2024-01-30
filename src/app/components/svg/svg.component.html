@@ -1,0 +1,6 @@
+<!-- svg-icon.component.html -->
+<div class="svg-container" #svgIcon (mouseover)="onMouseOver()" (mouseout)="onMouseOut()" (click)="onClick()">
+  <span class="svg-icon"
+    [ngClass]="{'svg-iconhover': isHover, 'svg-icon-selected': isSelected, 'svg-icon-svg': !isSelected && !isHover}"
+    [inlineSVG]="'../../assets/icons/send-icon.svg'"></span>
+</div>

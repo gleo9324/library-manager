@@ -1,0 +1,53 @@
+/* Stile generico del pulsante */
+.btn {
+  border-radius: 10px; /* Bordi arrotondati */
+  color: var(--primary-color);
+  width: 125px; /* Larghezza */
+  height: 30px; /* Altezza */
+  cursor: pointer; /* Manina puntatore */
+  display: flex; /* Utilizza il display flex per allineare il testo al centro verticalmente e orizzontalmente */
+  justify-content: center; /* Allinea il testo al centro orizzontalmente */
+  align-items: center; /* Allinea il testo al centro verticalmente */
+}
+
+/* Stile del testo nel pulsante */
+.button-text {
+  font-family: var(--font-generic); /* Tipo di carattere */
+  font-style: normal; /* Stile del testo neutro */
+  font-weight: 500; /* Spessore del carattere */
+  font-size: 14px; /* Dimensione del carattere */
+  line-height: 14px; /* Altezza della riga */
+  text-align: center; /* Allineamento orizzontale al centro */
+  text-transform: uppercase;
+}
+
+/* Stile del pulsante dark-button */
+.dark-btn {
+  background: var(--dark-color);
+}
+
+/* Stile del pulsante light-button */
+.light-btn {
+  background: var(--light-color);
+}
+
+/* Stile del pulsante empty button */
+.empty-btn {
+  background: var(--primary-color);
+  border: 1px solid var(--dark-color);
+  color: var(--dark-color);
+}
+
+.grey-btn {
+  background: var(--secondary-color);
+}
+/* Effetto al passaggio del mouse per tutti i pulsanti */
+.btn:hover {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/* Effetto al passaggio del mouse per il pulsante empty button*/
+.empty-btn:hover {
+  border: 1px solid var(--light-color);
+  color: var(--light-color);
+}

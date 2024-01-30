@@ -1,0 +1,59 @@
+<div class="general-container" [ngClass]="{'general-container-closed': !isOpen}">
+  <!--Title and basic buttons section-->
+  <div class="head-container">
+    <div class="icon-open" [inlineSVG]="'../../../assets/icons/arrow-icon.svg'" (click)="onOpenIconClick()"
+      [style.transform]="isOpen ? 'rotate(90deg)' : 'rotate(0deg)'"></div>
+    <p class="head-title">{{table.title}}</p>
+    <div class="head-buttons-container">
+      <p class="head-text" *ngIf="table.headButtons.length > 1">Aggiungi</p>
+      <app-default-button *ngFor="let button of table.headButtons, let j = index" [buttonText]="button"
+        [isEmpty]="false" [isLight]="true" [isGrey]="false"
+        (clickEvent)="onTableHeadButtonClick(j)"></app-default-button>
+    </div>
+  </div>
+  <!--Table section-->
+  <div class="table-container" *ngIf="isOpen">
+    <!--Upper section with filters, legend, and page selection-->
+    <div class="table-filters-container">
+      <div class="legend-container">
+        <div class="legend" *ngIf="table.hasLegend">
+          <div class="circle circle-one"></div>
+          <div class="legend-text">{{table.dataTypeOne || ''}}</div>
+        </div>
+        <div class="legend" *ngIf="table.hasLegend">
+          <div class="circle circle-two"></div>
+          <div class="legend-text">{{table.dataTypeTwo || ''}}</div>
+        </div>
+      </div>
+      <div *ngFor="let filter of table.filters, let i = index" class="filter-container">
+        <app-filter [filter]="filter"></app-filter>
+      </div>
+      <div class="browse-pages-container">
+        <app-browse-pages (sendPage)="onBrowsePages($event)" [maxPages]="maxPages" [currentPage]="page"
+          *ngIf="maxPages !== undefined"></app-browse-pages>
+      </div>
+    </div>
+    <!--Data section-->
+
+    <table class="table">
+      <tr class="table-head">
+        <th *ngFor="let tableHead of table.tableHead, let r = index" class="table-head-text">{{tableHead}}
+          <span class="icon-order" [inlineSVG]="'../../../assets/icons/arrow-icon.svg'" (click)="onOrderIconClick(r)"
+            [style.transform]="isOrdered[r] ? 'rotate(90deg)' : 'rotate(0deg)'"></span>
+        </th>
+        <th class="table-head-text">actions</th>
+      </tr>
+      <tr *ngFor="let dataRow of data?.slice(pageIndex,pageIndex+4), let k = index" class="table-row">
+        <td *ngFor="let column of table.tableHead, let r = index" class="table-row-text">
+          <ng-container *ngIf="isDate(dataRow[column])">{{dataRow[column] | date:
+            'dd/MM/yyyy'}}</ng-container>
+          <ng-container *ngIf="!isDate(dataRow[column])">{{dataRow[column]}}</ng-container>
+        </td>
+        <td class="table-row-action">
+          <app-action-icon *ngFor="let icon of table.actionIcons, let q=index" class="action-icon" [iconName]="icon"
+            (clickEvent)="onActionIconClick(q, k)"></app-action-icon>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

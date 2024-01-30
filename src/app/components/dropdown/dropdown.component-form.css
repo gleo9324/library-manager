@@ -1,0 +1,107 @@
+.f-text {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-left: 8px;
+  font-family: var(--font-generic);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 14px;
+  color: var(--secondary-color);
+}
+
+.f-placeholder {
+  color: var(--text-color);
+}
+
+.f-option {
+  line-height: 35px;
+  margin-left: 32px;
+}
+
+.f-option-selected {
+  color: var(--light-color);
+}
+
+.f-option:hover {
+  color: var(--light-color);
+}
+
+.f-new-option {
+  line-height: 35px;
+}
+
+.f-new-option:hover {
+  color: var(--light-color);
+}
+
+.f-rectangle {
+  width: 100%;
+  height: 31px;
+  border: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.f-rectangle-option-selected {
+  border-bottom: 2px solid var(--light-color);
+}
+
+.f-rectangle:hover {
+  cursor: pointer;
+}
+
+.f-placeholder-container {
+  width: 100%;
+  margin-top: 6px;
+  background-color: var(--primary-color);
+  gap: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.f-options-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  align-items: start;
+  padding-bottom: 8px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: var(--primary-color);
+  box-shadow: var(--input-shadow);
+  z-index: 1;
+}
+
+.f-line {
+  width: 90%;
+  height: 0px;
+  border: 1px solid var(--secondary-color);
+  align-self: center;
+  margin-bottom: 4px;
+}
+
+.new-obj-container {
+  display: flex;
+  align-items: center;
+  margin-left: 32px;
+  justify-content: center;
+}
+
+.new-obj-icon {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  transform: rotate(45deg);
+}
+
+.new-obj-icon ::ng-deep svg {
+  width: 24px;
+  height: 24px;
+}

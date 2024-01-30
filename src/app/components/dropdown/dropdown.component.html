@@ -1,0 +1,23 @@
+<div [class]="formType ? 'f-rectangle' : 'rectangle'"
+  [ngClass]="{'rectangle-close': !isClicked && !formType, 'f-rectangle-option-selected': optionSelected && formType,'read-only': readOnly}">
+  <div [class]="formType ? 'f-placeholder-container' : 'placeholder-container'" (click)="onDropdownClick()">
+    <div [class]="formType ? 'f-text' : 'text'" [ngClass]="{'f-option-selected': optionSelected && formType}">
+      {{dropdown.placeholder}}</div>
+    <div class="arrow" [inlineSVG]="'../../../assets/icons/dropdown-arrow-icon.svg'"
+      [style.transform]="isClicked ? 'rotate(180deg)' : 'rotate(0deg)'"></div>
+  </div>
+  <div [class]="formType ? 'f-options-container' : 'options-container'" *ngIf="isClicked">
+    <div class="line" *ngIf="!formType"></div>
+    <div [class]="formType ? 'f-text f-option' : 'text option'" *ngFor="let option of dropdown.options, let i = index"
+      (click)="optionIsSelected(i)">
+      {{option}}
+    </div>
+    <div class="f-line" *ngIf="formType"></div>
+    <div class="new-obj-container" *ngIf="formType">
+      <div class="new-obj-icon" [inlineSVG]="'../../../assets/icons/esc-icon.svg'"></div>
+      <div class="f-text f-new-option">
+        Ins. {{dropdown.placeholder}}
+      </div>
+    </div>
+  </div>
+</div>

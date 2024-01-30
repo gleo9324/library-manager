@@ -1,0 +1,8 @@
+<div class="radio-button-container">
+  <div *ngFor="let option of options; let i = index" class="option-container" (click)="handleOptionClick(i)">
+    <div class="ellipse">
+      <div class="ellipseSelected" *ngIf="option.isSelected"></div>
+    </div>
+    <div class="option" [innerText]="option.option"></div>
+  </div>
+</div>

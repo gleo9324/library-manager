@@ -1,0 +1,172 @@
+.rectangle {
+  background: var(--fill-color);
+  box-shadow: var(--popup-shadow);
+  border-radius: 20px;
+  width: 80%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(2, 117, 95, 0.7);
+  z-index: 2;
+}
+
+.head-container {
+  display: flex;
+  height: fit-content;
+  flex-direction: row;
+  justify-content: space-between; /* Utilizza space-between per allineare l'esc-icon a destra */
+}
+
+.esc-icon {
+  position: relative;
+  top: 5%;
+  right: 1%;
+  margin-top: 10px;
+}
+
+.esc-icon:hover {
+  cursor: pointer;
+}
+
+.save-button {
+  height: 15%;
+  width: 50%;
+  margin-left: auto;
+  margin-top: auto;
+  background: var(--light-color);
+  border-bottom-right-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.button-text {
+  font-family: var(--font-generic);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--primary-color);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.save-button:hover {
+  cursor: pointer;
+}
+
+.button-disabled {
+  background-color: var(--third-fill-color);
+}
+
+.button-disabled:hover {
+  cursor: default;
+}
+
+.title {
+  font-family: var(--font-generic);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 55px;
+  text-align: center;
+  color: var(--text-color);
+  flex: 1;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.form {
+  margin-top: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.all-input-container {
+  margin-top: auto;
+  margin-left: 32px;
+  margin-right: 32px;
+  display: grid;
+  gap: 16px 16px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 16px;
+}
+
+.input-container {
+  height: 65px;
+  width: 100%;
+  background: var(--primary-color);
+  border-radius: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: start;
+  box-shadow: var(--input-shadow);
+}
+
+.input-label {
+  font-family: var(--font-generic);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 23px;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin-left: 32px;
+  height: 40%;
+}
+
+.input-disabled {
+  background: var(--third-fill-color);
+}
+
+.input {
+  flex: 1;
+  max-width: 30%;
+  margin-right: 32px;
+  border: none;
+  font-family: var(--font-generic);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 35px;
+  color: var(--light-color);
+  height: 40%;
+}
+
+.input:enabled {
+  border-bottom: 2px solid var(--light-color);
+}
+
+input.ng-invalid {
+  border-bottom: 2px solid var(--danger-color);
+  color: var(--danger-color);
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--light-color);
+}
+
+.dropdown {
+  flex: 1;
+  max-width: 50%;
+}
+
+.btn-edit {
+  margin-right: 32px;
+  margin-left: auto;
+}

@@ -1,0 +1,15 @@
+<div class="page-container">
+  <!--This div contains the background of the page-->
+  <div class="page-background-container">
+    <!--Activate if there are multiple tables-->
+    <!--<h1 class="title">{{title}}</h1>-->
+    <div class="circle"></div>
+    <div class="icon-positioning icon icon-svg" [inlineSVG]="icon"></div>
+  </div>
+  <!--This div contains all the main objects of the page-->
+  <div class="main-content">
+    <app-table *ngFor="let tableType of tablesType" [tableType]="tableType"></app-table>
+  </div>
+  <!--Router to navigate to popups related to tables-->
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,54 @@
+<div class="background" (click)="closePopup()">
+  <div class="rectangle" (click)="handleRectangleClick($event)">
+    <div class="head-container">
+      <p class="title">titolo</p>
+      <div class="esc-icon" [inlineSVG]="'../../../assets/icons/esc-icon.svg'" (click)="closePopup()"></div>
+    </div>
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="all-input-container">
+        <div class="input-container"
+          [ngStyle]="{'grid-column': input[getFieldNames()[0]].dimension == 100 ? 'span 2' : 'span 1'}">
+          <!--set input width (one or two column on the line)-->
+          <label class="input-label">{{1}}.
+            {{input[getFieldNames()[0]].label}}</label>
+          <!--set dynamically type and formControlName from input. ngIf hides if type is dropdown.
+          When following input is clicked, this element becomes readonly-->
+          <input class="input" [type]="input[getFieldNames()[0]].type" [formControlName]="getFieldNames()[0]"
+            *ngIf="input[getFieldNames()[0]].type != 'dropdown'" [attr.readonly]="isReadOnly[0] ? true : null">
+          <!--set dynamically dropdown placeholder and options. Set dropdown style for form. ngIf hides if type is not dropdown.
+          When following input is clicked, this element becomes readonly.
+          The event emits the selected option and dropdown index-->
+          <app-dropdown class="dropdown" [dropdown]="dropdown[getFieldNames()[0]]" [formType]="true"
+            [readOnly]="isReadOnly[0] ? true : false" *ngIf="input[getFieldNames()[0]].type == 'dropdown'"
+            (optionEmitter)="onOptionSelected($event, 0)"></app-dropdown>
+          <!--viewed only if following input is clicked-->
+          <app-default-button class="btn-edit" [buttonText]="'modifica'" [isGrey]="true" *ngIf="isReadOnly[0]"
+            (clickEvent)="onEditClick(0)"></app-default-button>
+        </div>
+        <!--Since the first input is out the ngFor, i is 0 when fieldNames -2.
+          Thus, previous input = i, present input = i+1, following input = i+2
+        style container changes if previous input is valid. Then, input (or dropdown) becomes visible.
+        (focus) and (click) are used to set previous input to readonly-->
+        <div class="input-container"
+          *ngFor="let fieldName of getFieldNames().slice(1,getFieldNames().length); let i = index"
+          [ngStyle]="{'grid-column': input[fieldName].dimension == 100 ? 'span 2' : 'span 1'}"
+          [ngClass]="{'input-disabled': !form.get(getFieldNames()[i])?.valid}">
+          <label class="input-label">{{i+2}}.
+            {{input[fieldName].label}}</label>
+          <input class="input" [type]="input[fieldName].type" [formControlName]="fieldName"
+            *ngIf="form.get(getFieldNames()[i])?.valid && input[fieldName].type != 'dropdown'" (focus)="isOnFocus(i)"
+            [attr.readonly]="isReadOnly[i+1] ? true : null">
+          <app-dropdown class="dropdown" [dropdown]="dropdown[fieldName]" [formType]="true"
+            [readOnly]="isReadOnly[i+1] ? true : false" (optionEmitter)="onOptionSelected($event, i+1)"
+            *ngIf="input[fieldName].type == 'dropdown' && form.get(getFieldNames()[i])?.valid"
+            (click)="isOnFocus(i)"></app-dropdown>
+          <app-default-button class="btn-edit" [buttonText]="'modifica'" [isGrey]="true" *ngIf="isReadOnly[i+1]"
+            (clickEvent)="onEditClick(i+1)"></app-default-button>
+        </div>
+      </div>
+      <button class="save-button" type="submit" [disabled]="!form.valid" [ngClass]="{'button-disabled': !form.valid}">
+        <p class="button-text">Salva</p>
+      </button>
+    </form>
+  </div>
+</div>

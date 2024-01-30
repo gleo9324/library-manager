@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+}
+
+.nav {
+  width: 120px;
+  height: 100vh;
+  z-index: 1;
+}

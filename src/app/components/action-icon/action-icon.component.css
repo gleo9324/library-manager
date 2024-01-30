@@ -1,0 +1,33 @@
+.action-icon-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.action-icon ::ng-deep svg path {
+  fill: var(--unselected-color);
+}
+
+.edit:hover ::ng-deep svg path {
+  fill: var(--light-color);
+}
+
+.ok:hover ::ng-deep svg path {
+  fill: var(--light-color);
+}
+
+.send:hover ::ng-deep svg path {
+  fill: var(--light-color);
+}
+
+.bin:hover ::ng-deep svg path {
+  fill: var(--danger-color);
+}
+
+.printer:hover ::ng-deep svg path {
+  fill: var(--text-color);
+}
+
+.action-icon-hover ::ng-deep svg path {
+  fill: var(--unselected-color);
+}
